@@ -1,17 +1,17 @@
-# Overleaf Local Installation
+# Simple Overleaf Toolkit
 
-This is a local instance of Overleaf (formerly ShareLaTeX) running via Docker Compose.
+A streamlined toolkit for running Overleaf Community Edition locally via Docker Compose.
 
-## Usage
+## Quick Start
 
-### Starting Overleaf
-
-To start the Overleaf installation:
+### Installation
 
 ```bash
-# Linux/Mac/WSL
+# First-time installation
 bash install.sh
 ```
+
+For detailed installation instructions, see [INSTALL.md](INSTALL.md).
 
 ### Accessing Overleaf
 
@@ -19,60 +19,74 @@ Once running, Overleaf is available at:
 
 http://localhost:8080/launchpad
 
-### Stopping Overleaf
-
-To stop all containers:
+### Daily Usage
 
 ```bash
-# Linux/Mac/WSL
+# Start existing installation
+bash run.sh
+
+# Stop all services
 bash stop.sh
 ```
 
-### Full Cleanup
+## Toolkit Scripts
 
-To completely remove all containers, volumes, and data:
+| Script              | Description                              |
+| ------------------- | ---------------------------------------- |
+| `install.sh`        | First-time installation of Overleaf      |
+| `run.sh`            | Start all services in the correct order  |
+| `stop.sh`           | Stop all services                        |
+| `shell.sh`          | Open a shell in the Sharelatex container |
+| `update.sh`         | Install additional TeX packages          |
+| `check-packages.sh` | Verify installed TeX packages            |
+| `cleanup.sh`        | Remove all containers, volumes, and data |
 
-```bash
-# Linux/Mac/WSL
-bash cleanup.sh
-```
+## Data Storage
 
-Note: This will delete all your Overleaf data!
-
-### Data Storage
-
-All data is stored in Docker volumes, which are backed by the `docker/data` directory.
+All data is stored in Docker volumes, which are backed by the `docker/data` directory:
 
 -   `docker/data/sharelatex` - Document data
 -   `docker/data/mongo` - MongoDB data
 -   `docker/data/redis` - Redis data
 
-## Components
+## System Components
 
 This Overleaf installation consists of:
 
-1. ShareLaTeX/Overleaf - The main web application
-2. MongoDB - Database for storing user and project information
-3. Redis - Used for session management and caching
+1. **ShareLaTeX/Overleaf** - The main web application
+2. **MongoDB** - Database for storing user and project information
+3. **Redis** - Used for session management and caching
 
-## Troubleshooting
+## Basic Troubleshooting
 
 If you encounter issues:
 
-1. Check the container logs:
+1. Check container logs:
 
     ```bash
     docker compose -f docker/docker-compose.yml logs
     ```
 
-2. Try restarting the containers:
+2. Restart services:
 
     ```bash
     docker compose -f docker/docker-compose.yml restart
     ```
 
-3. For persistent data issues, you might need to clean up and start fresh:
+3. For persistent issues, reset the installation:
     ```bash
-    bash cleanup.sh
+    bash cleanup.sh   # Warning: Deletes all data!
     bash install.sh
     ```
+
+For more detailed troubleshooting and configuration options, refer to [INSTALL.md](INSTALL.md).
+
+## License
+
+This toolkit is available under the MIT License. See [LICENSE](LICENSE) file for details.
+
+## Additional Resources
+
+-   [Overleaf Community Edition](https://github.com/overleaf/overleaf)
+-   [Docker Documentation](https://docs.docker.com/)
+-   [TeX Live Documentation](https://www.tug.org/texlive/doc.html)
