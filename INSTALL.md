@@ -46,7 +46,15 @@ This script performs the following actions:
 5. Starts the Sharelatex service
 6. Creates necessary configuration files
 
-After installation completes, Overleaf will be available at: http://localhost:8080/launchpad
+After installation completes, it's recommended to run the update script to ensure you have all necessary TeX packages:
+
+```powershell
+bash update.sh
+```
+
+This will allow you to install additional TeX packages or update existing ones. More details in the "Installing Additional TeX Packages" section below.
+
+After installation and updates are complete, Overleaf will be available at: http://localhost:8080/launchpad
 
 ### Day-to-day Usage
 

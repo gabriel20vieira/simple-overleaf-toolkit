@@ -9,6 +9,9 @@ A streamlined toolkit for running Overleaf Community Edition locally via Docker 
 ```bash
 # First-time installation
 bash install.sh
+
+# After installation, install additional TeX packages (recommended)
+bash update.sh
 ```
 
 For detailed installation instructions, see [INSTALL.md](INSTALL.md).
@@ -31,15 +34,15 @@ bash stop.sh
 
 ## Toolkit Scripts
 
-| Script              | Description                              |
-| ------------------- | ---------------------------------------- |
-| `install.sh`        | First-time installation of Overleaf      |
-| `run.sh`            | Start all services in the correct order  |
-| `stop.sh`           | Stop all services                        |
-| `shell.sh`          | Open a shell in the Sharelatex container |
-| `update.sh`         | Install additional TeX packages          |
-| `check-packages.sh` | Verify installed TeX packages            |
-| `cleanup.sh`        | Remove all containers, volumes, and data |
+| Script              | Description                                                  |
+| ------------------- | ------------------------------------------------------------ |
+| `install.sh`        | First-time installation of Overleaf                          |
+| `run.sh`            | Start all services in the correct order                      |
+| `stop.sh`           | Stop all services                                            |
+| `shell.sh`          | Open a shell in the Sharelatex container                     |
+| `update.sh`         | Install/update TeX packages (recommended after installation) |
+| `check-packages.sh` | Verify installed TeX packages                                |
+| `cleanup.sh`        | Remove all containers, volumes, and data                     |
 
 ## Data Storage
 
