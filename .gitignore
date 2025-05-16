@@ -1,0 +1,18 @@
+# Ignore Docker data directories
+docker/data/
+docker/data/sharelatex/
+docker/data/mongo/
+docker/data/redis/
+
+# Ignore logs
+*.log
+
+# Ignore Docker generated files
+.docker/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+.env
