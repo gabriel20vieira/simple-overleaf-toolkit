@@ -1,0 +1,35 @@
+services:
+  sharelatex:
+    extends:
+      file: services/sharelatex.yml
+      service: sharelatex
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - overleaf
+
+  mongo:
+    extends:
+      file: services/mongo.yml
+      service: mongo
+    networks:
+      - overleaf
+
+  redis:
+    extends:
+      file: services/redis.yml
+      service: redis
+    networks:
+      - overleaf
+
+volumes:
+  overleaf_data:
+  mongo:
+  redis:
+
+networks:
+  overleaf:
+    driver: bridge

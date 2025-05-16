@@ -1,0 +1,15 @@
+services:
+    mongo:
+        image: mongo:6.0
+        container_name: overleaf_mongo
+        restart: always
+        volumes:
+            - mongo:/data/db
+        expose:
+            - 27017
+        command: ["mongod", "--replSet", "rs0"]
+        healthcheck:
+            test: ["CMD", "echo", 'db.runCommand("ping").ok', "|", "mongosh", "localhost:27017/test", "--quiet"]
+            interval: 10s
+            timeout: 5s
+            retries: 5

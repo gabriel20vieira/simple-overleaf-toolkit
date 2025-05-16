@@ -1,0 +1,7 @@
+services:
+    redis:
+        image: redis:6.2
+        container_name: overleaf_redis
+        restart: always
+        volumes:
+            - redis:/data

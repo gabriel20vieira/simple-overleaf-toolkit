@@ -1,0 +1,26 @@
+services:
+    sharelatex:
+        image: sharelatex/sharelatex:latest
+        container_name: overleaf_sharelatex
+        restart: always
+        ports:
+            - "8080:80"
+        volumes:
+            - overleaf_data:/var/lib/overleaf
+        environment:
+            OVERLEAF_APP_NAME: "Overleaf Community Edition"
+            OVERLEAF_MONGO_URL: "mongodb://overleaf_mongo/sharelatex"
+            OVERLEAF_REDIS_HOST: "overleaf_redis"
+            ENABLE_CONVERSIONS: "true" # Enables thumbnail generation with ImageMagick
+            EMAIL_CONFIRMATION_DISABLED: "true" # Disables email confirmation for users
+            # Optional: Uncomment and configure for email notifications
+            # OVERLEAF_EMAIL_FROM_ADDRESS: "hello@example.com"
+            # OVERLEAF_EMAIL_SMTP_HOST: "smtp.example.com"
+            # OVERLEAF_EMAIL_SMTP_PORT: "587"
+            # OVERLEAF_EMAIL_SMTP_USER: "user"
+            # OVERLEAF_EMAIL_SMTP_PASS: "pass"
+            # Optional: Customize site appearance
+            # OVERLEAF_SITE_URL: "http://localhost"
+            # OVERLEAF_NAV_TITLE: "My Overleaf Instance"
+            # OVERLEAF_ADMIN_EMAIL: "admin@example.com"
+        stop_grace_period: 60s
